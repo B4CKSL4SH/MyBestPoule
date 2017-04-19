@@ -42,7 +42,10 @@ function signup($email, $password)
     $stmt->bindParam(':password', $password); // à hasher bordel !
     $stmt->execute();
 
-    return $dbh->lastInsertId(); // user_id
+    $id = $dbh->lastInsertId(); // user_id
+    $_SESSION['user_id'] = $id;
+
+    return $id;
 }
 
 function signin($email, $password)
