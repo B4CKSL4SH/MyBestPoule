@@ -2,14 +2,6 @@
 include_once('functions.php');
 $dbh = get_database();
 
-
-function get_creator_id() {
-    // devrait venir de la session quand l'utilisateur est connecté
-
-    return 1;
-}
-
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     //print_r($_POST);
@@ -17,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $stmt = $dbh->prepare("INSERT INTO event (title, description, creator_id, start_at, ends_at, location, min_participants, max_participants, surprise_me, price) VALUES (:title, :description, :creator_id, :start_at, :ends_at, :location, :min_participants, :max_participants, :surprise_me, :price)");
     $stmt->bindParam(':title', $_POST['title']);
-    $stmt->bindParam(':creator_id', get_creator_id());
+    $stmt->bindParam(':creator_id', get_current_user_id());
     $stmt->bindParam(':description', $_POST['description']);
 
     $start_at = $_POST['date_start_at'];
