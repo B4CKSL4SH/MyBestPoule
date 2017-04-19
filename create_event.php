@@ -67,58 +67,100 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 require('header.php');
 
 ?>
-<section class="max-width">
+    <section class="max-width">
 
-<form method="POST">
-    <label for="title">Titre</label>
-    <input type="text" name="title" value="test" placeholder="Titre" required="required" />
-    <br />
+        <form method="POST">
 
-    <label for="description">Description</label>
-    <textarea name="description"></textarea>
-    <br />
+            <div class="row">
 
-    <label for="categories">Catégories</label>
-    <?php foreach (getTags() as $tag) : ?>
-    <input type="checkbox" name="event_tags[]" value="<?php echo $tag["id"] ?>" id="tag_<?php echo $tag["id"] ?>" /> <?php echo $tag["label"] ?><br />
-    <?php endforeach; ?>
+                <div style="margin-right:30px;">
+                    <img src="includes/img/effeil.jpg" alt="" width="220" />
+                    <br /><a href="" title="" style="font-size:12px;">Changer la photo de l'évenement</a>
+                </div>
 
-    <label for="date_start_at">Date de début</label>
-    <input type="date" min="<?php echo date('Y-m-d'); ?>" name="date_start_at" required="required" />
-    <input type="time" name="time_start_at" />
-    <br />
+                <div class="column form">
+                    <h2 style="margin-top:0;">Evenement</h2>
+                    <div>
+                        <label for="title">Titre de l'évenement* :</label>
+                        <input type="text" name="title" value="test" placeholder="Titre" required="required" />
+                    </div>
 
-    <label for="date_ends_at">Date de fin</label>
-    <input type="date" min="<?php echo date('Y-m-d'); ?>" name="date_ends_at" />
-    <input type="time" name="time_ends_at" />
-    <br />
+                    <div>
+                    <label for="description">Description :</label>
+                    <textarea name="description"></textarea>
+                    </div>
 
-    <label for="location">Emplacement</label>
-    <input type="text" name="location" value="test" placeholder="Lieu de l'évenement" required="required" />
-    <br />
+                    <div>
+                        <label for="categories">Catégories de l'évenement* :</label>
+                        <input type="checkbox" name="event_tags[]" value="5" id="tag_5" /> Cinema<br />
+                        <input type="checkbox" name="event_tags[]" value="7" id="tag_7" /> Concert<br />
+                        <input type="checkbox" name="event_tags[]" value="6" id="tag_6" /> Culture<br />
+                        <input type="checkbox" name="event_tags[]" value="1" id="tag_1" /> Escape Game<br />
+                        <input type="checkbox" name="event_tags[]" value="2" id="tag_2" /> Loisirs<br />
+                        <input type="checkbox" name="event_tags[]" value="4" id="tag_4" /> Musique<br />
+                        <input type="checkbox" name="event_tags[]" value="3" id="tag_3" /> Sport<br />
+                    </div>
 
-    <label for="min_participants">Minimum de participants</label>
-    <input type="number" name="min_participants" min="1" value="1" />
-    <br />
+                    <div class="row">
+                        <div style="margin-right:60px;">
+                                <label for="date_start_at">L'évenement commence* :</label>
+                            <div class="row">
+                                <input type="date" min="2017-04-19" name="date_start_at" required="required" style="margin:0 5px 0 0;width:100px;display:inline-block;vertical-align: top;"/>
+                                à
+                                <input type="time" name="time_start_at" style="margin:0 5px;width:80px;display:inline-block;vertical-align: top;"/>
+                            </div>
 
-    <label for="max_participants">Maximum de participants</label>
-    <input type="number" name="max_participants" min="1" />
-    <br />
+                        </div>
+                        <div>
+                                <label for="date_ends_at">Et se termine* :</label>
+                    <div class="row">
 
-    <label for="price">Participation financière</label>
-    <input type="number" name="price" />
-    <br />
+                        <input type="date" min="2017-04-19" name="date_ends_at" style="margin:0 5px 0 0;width:100px;display:inline-block;vertical-align: top;"/>
+                        à
+                        <input type="time" name="time_ends_at" style="margin:0 5px;width:80px;display:inline-block;vertical-align: top;" />
+                    </div>
 
-    <label for="surprise_me">Surprends moi !</label>
-    <input type="checkbox" name="surprise_me" value="on" />
-    <br />
-
-    <button type="submit" name="create_event">Créer l'évènement</button>
-
-</form>
+                        </div>
+                    </div>
 
 
-</section>
+
+                    <div>
+                        <label for="location">Localisation* :</label>
+                        <input type="text" name="location" value="test" placeholder="Adresse de l'évenement" required="required" style="width:500px;"/>
+                    </div>
+
+                    <h2>Participants</h2>
+                    <div class="row">
+                        <label for="min_participants">Nombre minimum :</label>
+                        <input type="number" name="min_participants" min="1" value="1" style="margin-left:5px;"/>
+                    </div>
+
+                    <div class="row">
+                        <label for="max_participants">Nombre maximum :</label>
+                        <input type="number" name="max_participants" min="1" style="margin-left:5px;"/>
+                   </div>
+
+                    <div>
+                        <label for="price">Prix par personne :</label>
+                        <input type="number" name="price" />€
+                    </div>
+
+                    <div class="row" style="margin:20px 0 0 0;">
+                        <label for="surprise_me">Surprends moi !</label>
+                        <input type="checkbox" name="surprise_me" value="on" />
+                    </div>
+                    <a href="" title="">Késako ?</a>
+
+                    <br />
+                    <button type="submit" name="create_event" class="button" style="border:0;">Créer l'évènement</button>
+                </div>
+            </div>
+
+
+        </form>
+
+    </section>
 <?php
 
 require('footer.php');

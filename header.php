@@ -24,7 +24,11 @@
 <header>
     <div class="max-width">
 
-        <div><a href="index.php">LOGO</a></div>
+        <div>
+            <a href="index.php" title="">
+                <img src="includes/img/logo.jpg" alt="" width="200" height="54"/>
+            </a>
+        </div>
 
         <div>
             <a href="create_event.php" title="create_event" class="button">Créer l'évenement</a>

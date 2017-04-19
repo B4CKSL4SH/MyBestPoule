@@ -7,7 +7,7 @@ body{
 
     a:link, a:visited{color:#E64215;}
 
-    h1, h2, h3, h4{
+    h1, .h1, h2, h3, h4{
         font-weight:700;
 
         span{font-weight: 300;}
@@ -88,6 +88,7 @@ header{
 
         &.grey{background:#333;}
     }
+    .h1{font-size:30px;}
 }
 
 section{
@@ -226,3 +227,33 @@ section{
     }
 
 }
+
+
+form{
+    .form > div {margin-bottom:20px;}
+
+    label{display:block;margin-bottom:5px;}
+
+    input{padding:5px;}
+    input[type="text"]{width:300px;}
+    input[type="number"]{width:90px;}
+    textarea{width:400px;height:100px;}
+
+.button{
+        background:#E64215;
+        color:#fff!important;
+        font-size:17px;
+        font-weight: 700;
+        text-decoration: none;
+        display:inline-block;
+        padding:20px 20px;
+        margin:20px 0;
+        box-sizing: border-box;
+        vertical-align: top;
+        height:60px;
+        width:50%;
+
+    }
+
+}
+

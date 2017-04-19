@@ -89,7 +89,7 @@ require('header.php');
             <p class="title" style="margin-top:0;">Une idée de sortie ?</p>
             <p>Lorem ipsum dolor sit amet, adi dolor elit.<br />Mauris eu rutrum...</p>
 
-            <a href="" title="" class="button">Créer l'évènement !</a>
+            <a href="create_event.php" title="" class="button">Créer l'évènement !</a>
             <p style="font-size:12px;opacity:0.7;margin-bottom:0;text-align:center;text-decoration:underline;">Malsuda non lorem ?</p>
         </div>
     </section>
