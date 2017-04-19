@@ -4,12 +4,13 @@ $dbh = get_database();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    print_r($_POST);
-    exit;
+    //print_r($_POST);
+    //exit;
+    $user_id = get_current_user_id();
 
     $stmt = $dbh->prepare("INSERT INTO event (title, description, creator_id, start_at, ends_at, location, min_participants, max_participants, surprise_me, price) VALUES (:title, :description, :creator_id, :start_at, :ends_at, :location, :min_participants, :max_participants, :surprise_me, :price)");
     $stmt->bindParam(':title', $_POST['title']);
-    $stmt->bindParam(':creator_id', get_current_user_id());
+    $stmt->bindParam(':creator_id', $user_id);
     $stmt->bindParam(':description', $_POST['description']);
 
     $start_at = $_POST['date_start_at'];
@@ -43,17 +44,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $stmt->execute();
 
-    // tags
-    /*
-event_tags] => Array
-        (
-            [0] => 7
-            [1] => 6
-        )
+    $id_event = $dbh->lastInsertId();
 
-    */
-
-
+    if (is_numeric($id_event) && is_array($_POST['event_tags'])) {
+        foreach($_POST['event_tags'] as $tag_id) {
+            $stmt = $dbh->prepare("INSERT INTO event_tag (event_id, tag_id) VALUES (:event_id, :tag_id)");
+            $stmt->bindParam(':event_id', $id_event);
+            $stmt->bindParam(':tag_id', $tag_id);
+            $stmt->execute();
+        }
+    }
 
     // rediriger où ?
     header("Location: create_event.php");
