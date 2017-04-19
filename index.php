@@ -32,7 +32,7 @@
 
             <div>
                 <a href="" title="" class="button">Créer l'évenement</a>
-                <a href="" title="" class="button grey"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
+                <a href="profile.php" title="" class="button grey"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
             </div>
         </div>
     </header>
