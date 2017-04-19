@@ -140,4 +140,71 @@ function saveUserTags($tags)
         $stmt->execute();
     }
 }
-//function set_tag($)
+
+function random_rule($id_event)
+{
+    $dbh = get_database();
+
+    $stmt = $dbh->prepare("
+        SELECT *
+        FROM event
+        WHERE id = :id"
+    );
+    $stmt->bindParam(':id', $id_event);
+    $stmt->execute();
+    $event = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $event = $event[0];
+
+    $stmt = $dbh->prepare("
+        SELECT tag_id
+        FROM event_tag
+        WHERE event_id = :id"
+    );
+    $stmt->bindParam(':id', $id_event);
+    $stmt->execute();
+    $event_tags = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+    print_r($event);
+    print_r($event_tags);
+
+    $query = "
+    SELECT
+        u.*
+    FROM
+        user u
+    JOIN
+        user_tag tu
+    ON
+        u.id = tu.user_id
+        AND tu.tag_id IN (".implode(', ', $event_tags).")
+    WHERE
+        u.id <> ".$event['creator_id']."
+    ORDER BY
+        RAND() ";
+
+    $limit = null;
+    if (is_numeric($event['max_participants']) && $event['max_participants'] > 0) {
+        $limit = $event['max_participants'];
+    }
+    if ($limit) {
+        $query .= " LIMIT ".$limit;
+    }
+
+    echo $query;
+    exit;
+
+
+    /*$stmt = $dbh->prepare("
+        SELECT
+            u.*
+        FROM user u
+        WHERE id = :id"
+    );*/
+
+
+
+
+
+}
+
+//random_rule(10);

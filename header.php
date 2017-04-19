@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     <title>MyBestEvent</title>
 
@@ -23,7 +24,7 @@
 <header>
     <div class="max-width">
 
-        <div>LOGO</div>
+        <div><a href="index.php">LOGO</a></div>
 
         <div>
             <a href="create_event.php" title="create_event" class="button">Créer l'évenement</a>

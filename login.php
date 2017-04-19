@@ -9,12 +9,15 @@ $dbh = get_database();
             die("Erreur d'authentification");
         }
 
+        header('Location: index.php');
+        exit;
+
     } elseif (!empty($_POST) && isset($_POST['signup'])) {
         // creation du user + redirection vers choix des filtres
         $id = signup($_POST['email'], $_POST['password']);
 
-        die('redirection vers choix des filtres');
-        //header('Location: #');
+        header('Location: profile.php');
+        exit;
     }
 
 require('header.php');

@@ -55,6 +55,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
+    random_rule($id_event);
+
+
+
     // rediriger où ?
     header("Location: create_event.php");
 }
@@ -63,6 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 require('header.php');
 
 ?>
+<section class="max-width">
 
 <form method="POST">
     <label for="title">Titre</label>
@@ -113,7 +118,7 @@ require('header.php');
 </form>
 
 
-
+</section>
 <?php
 
 require('footer.php');
