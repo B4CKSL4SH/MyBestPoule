@@ -164,12 +164,9 @@ function random_rule($id_event)
     $stmt->execute();
     $event_tags = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-    print_r($event);
-    print_r($event_tags);
-
     $query = "
     SELECT
-        u.*
+        u.id
     FROM
         user u
     JOIN
@@ -181,7 +178,6 @@ function random_rule($id_event)
         u.id <> ".$event['creator_id']."
     ORDER BY
         RAND() ";
-
     $limit = null;
     if (is_numeric($event['max_participants']) && $event['max_participants'] > 0) {
         $limit = $event['max_participants'];
@@ -190,21 +186,20 @@ function random_rule($id_event)
         $query .= " LIMIT ".$limit;
     }
 
-    echo $query;
-    exit;
+    $stmt = $dbh->prepare("DELETE FROM event_user WHERE event_id = :event_id");
+    $stmt->bindParam(':event_id', $id_event);
+    $stmt->execute();
 
+    foreach($dbh->query($query) as $row) {
+        $user_id = $row['id'];
+        $stmt = $dbh->prepare("INSERT INTO event_user (user_id, event_id) VALUES (:user_id, :event_id)");
+        $userId = get_current_user_id();
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->bindParam(':event_id', $id_event);
+        $stmt->execute();
 
-    /*$stmt = $dbh->prepare("
-        SELECT
-            u.*
-        FROM user u
-        WHERE id = :id"
-    );*/
-
-
-
-
-
+        //echo "user_id = ".$user_id." event_id = ".$id_event."\n";
+    }
 }
 
-//random_rule(10);
+
