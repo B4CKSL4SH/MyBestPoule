@@ -70,7 +70,11 @@ function signin($email, $password)
 
 function get_current_user_id()
 {
-    return $_SESSION['user_id'];
+    if (array_key_exists('user_id', $_SESSION) && is_numeric($_SESSION['user_id'])) {
+        return $_SESSION['user_id'];
+    }
+
+    return null;
 }
 
 function getTags()

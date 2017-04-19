@@ -2,6 +2,11 @@
     include_once 'header.php';
     include_once('functions.php');
 
+    if (!get_current_user_id()) {
+        header('Location: login.php');
+        exit;
+    }
+
 
     if (!empty($_POST) && isset($_POST['user_tags'])) {
         purgeUserTags();
