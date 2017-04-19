@@ -166,7 +166,7 @@ function random_rule($id_event)
 
     $query = "
     SELECT
-        u.id
+        DISTINCT u.id
     FROM
         user u
     JOIN
@@ -185,6 +185,7 @@ function random_rule($id_event)
     if ($limit) {
         $query .= " LIMIT ".$limit;
     }
+    //echo $query;
 
     $stmt = $dbh->prepare("DELETE FROM event_user WHERE event_id = :event_id");
     $stmt->bindParam(':event_id', $id_event);
@@ -202,4 +203,4 @@ function random_rule($id_event)
     }
 }
 
-
+//random_rule(13); exit;

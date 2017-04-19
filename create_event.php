@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     // rediriger où ?
-    header("Location: create_event.php");
+    header("Location: index.php");
 }
 
 
