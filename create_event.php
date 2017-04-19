@@ -4,8 +4,8 @@ $dbh = get_database();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    //print_r($_POST);
-    //exit;
+    print_r($_POST);
+    exit;
 
     $stmt = $dbh->prepare("INSERT INTO event (title, description, creator_id, start_at, ends_at, location, min_participants, max_participants, surprise_me, price) VALUES (:title, :description, :creator_id, :start_at, :ends_at, :location, :min_participants, :max_participants, :surprise_me, :price)");
     $stmt->bindParam(':title', $_POST['title']);
@@ -43,6 +43,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $stmt->execute();
 
+    // tags
+    /*
+event_tags] => Array
+        (
+            [0] => 7
+            [1] => 6
+        )
+
+    */
+
+
+
     // rediriger où ?
     header("Location: create_event.php");
 }
@@ -62,8 +74,9 @@ require('header.php');
     <br />
 
     <label for="categories">Catégories</label>
-    <input type="text" name="categories" value="test1, test2, test3" placeholder="Pause café, Restaurant" required="required" />
-    <br />
+    <?php foreach (getTags() as $tag) : ?>
+    <input type="checkbox" name="event_tags[]" value="<?php echo $tag["id"] ?>" id="tag_<?php echo $tag["id"] ?>" /> <?php echo $tag["label"] ?><br />
+    <?php endforeach; ?>
 
     <label for="date_start_at">Date de début</label>
     <input type="date" min="<?php echo date('Y-m-d'); ?>" name="date_start_at" required="required" />
@@ -95,23 +108,6 @@ require('header.php');
     <input type="checkbox" name="surprise_me" value="on" />
     <br />
 
-
-<!--
-id                    | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
-| image                 | varchar(255)     | YES  |     | NULL    |                |
-| creator_id            | int(10) unsigned | NO   |     | NULL    |                |
-| description           | text             | YES  |     | NULL    |                |
-| start_at              | datetime         | NO   |     | NULL    |                |
-| ends_at               | datetime         | YES  |     | NULL    |                |
-| location              | varchar(512)     | YES  |     | NULL    |                |
-| min_participants      | int(11)          | YES  |     | NULL    |                |
-| max_participants      | int(11)          | YES  |     | NULL    |                |
-| last_randomization_at | datetime         | YES  |     | NULL    |                |
-| price                 | float(7,2)       | YES  |     | NULL    |                |
-| is_finished           | tinyint(1)       | NO   |     | 0       |                |
-| surprise_me           | tinyint(1)       | NO   |     | 0       |
-
--->
     <button type="submit" name="create_event">Créer l'évènement</button>
 
 </form>
