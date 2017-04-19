@@ -1,5 +1,7 @@
 <?php
-include_once('connect.php');
+include_once('functions.php');
+$dbh = get_database();
+
 
 function get_creator_id() {
     // devrait venir de la session quand l'utilisateur est connecté
@@ -65,6 +67,10 @@ require('header.php');
 
     <label for="description">Description</label>
     <textarea name="description"></textarea>
+    <br />
+
+    <label for="categories">Catégories</label>
+    <input type="text" name="categories" value="test1, test2, test3" placeholder="Pause café, Restaurant" required="required" />
     <br />
 
     <label for="date_start_at">Date de début</label>
