@@ -2,16 +2,23 @@
 include_once('functions.php');
 $dbh = get_database();
 
-require('header.php');
     if (!empty($_POST) && isset($_POST['login'])) {
         // connection du user + redirection vers le dashboard
-        // $login = $_POST['email'];
-        // $pswd = $_POST['password'];
+        $result = signin($_POST['email'], $_POST['password']);
+        if (!$result) {
+            die("Erreur d'authentification");
+        }
+
     } elseif (!empty($_POST) && isset($_POST['signup'])) {
         // creation du user + redirection vers choix des filtres
-        // $login = $_POST['email'];
-        // $pswd = $_POST['password'];
+        $id = signup($_POST['email'], $_POST['password']);
+
+        die('redirection vers choix des filtres');
+        //header('Location: #');
     }
+
+require('header.php');
+
 ?>
 
 <div>
