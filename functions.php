@@ -87,8 +87,7 @@ function getUserTags()
     $stmt = $dbh->prepare("
         SELECT t.id, t.label
         FROM tag AS t
-        INNER JOIN user_tag AS ut ON t.id = ut.tag_id
-        INNER JOIN user AS u ON ut.user_id = :user_id
+        INNER JOIN user_tag AS ut ON t.id = ut.tag_id AND ut.user_id = :user_id
         ORDER BY t.label"
     );
 
@@ -97,7 +96,48 @@ function getUserTags()
 
     $stmt->execute();
 
-    return $stmt->fetchAll();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function getUserTagsIds()
+{
+    $dbh = get_database();
+
+    $stmt = $dbh->prepare("
+        SELECT t.id
+        FROM tag AS t
+        INNER JOIN user_tag AS ut ON t.id = ut.tag_id AND ut.user_id = :user_id
+        ORDER BY t.label"
+    );
+
+    $userId = get_current_user_id();
+    $stmt->bindParam(':user_id', $userId);
+
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_COLUMN);
+}
+
+function purgeUserTags()
+{
+    $dbh = get_database();
+
+    $stmt = $dbh->prepare("DELETE FROM user_tag WHERE user_id = :user_id");
+    $userId = get_current_user_id();
+    $stmt->bindParam(':user_id', $userId);
+    $stmt->execute();
+}
+
+function saveUserTags($tags)
+{
+    $dbh = get_database();
+
+    foreach ($tags as $tagId) {
+        $stmt = $dbh->prepare("INSERT INTO user_tag (id, user_id, tag_id) VALUES (NULL, :user_id, :tag_id)");
+        $userId = get_current_user_id();
+        $stmt->bindParam(':user_id', $userId);
+        $stmt->bindParam(':tag_id', $tagId);
+        $stmt->execute();
+    }
+}
 //function set_tag($)
