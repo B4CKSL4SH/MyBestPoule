@@ -73,4 +73,31 @@ function get_current_user_id()
     return $_SESSION['user_id'];
 }
 
+function getTags()
+{
+    $dbh = get_database();
+
+    return $dbh->query("SELECT * FROM tag order by label");
+}
+
+function getUserTags()
+{
+    $dbh = get_database();
+
+    $stmt = $dbh->prepare("
+        SELECT t.id, t.label
+        FROM tag AS t
+        INNER JOIN user_tag AS ut ON t.id = ut.tag_id
+        INNER JOIN user AS u ON ut.user_id = :user_id
+        ORDER BY t.label"
+    );
+
+    $userId = get_current_user_id();
+    $stmt->bindParam(':user_id', $userId);
+
+    $stmt->execute();
+
+    return $stmt->fetchAll();
+}
+
 //function set_tag($)
