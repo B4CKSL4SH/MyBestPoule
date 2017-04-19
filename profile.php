@@ -12,6 +12,8 @@
         purgeUserTags();
 
         saveUserTags($_POST['user_tags']);
+        header('Location: index.php');
+        exit;
     }
 
     $userTags = getUserTagsIds();
