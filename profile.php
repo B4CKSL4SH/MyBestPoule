@@ -28,35 +28,35 @@
                     <div class="column event">
                         <i class="fa fa-ticket" aria-hidden="true" style="background: #e9256a;"></i>
                         <label for="tag_5">Cinema</label>
-                        <input type="checkbox" name="user_tags[]" value="5" id="tag_5" />
+                        <input type="checkbox" name="user_tags[]" value="5" id="tag_5" <?php echo in_array(5, $userTags) ? 'checked="checked"' : '' ?>/>
                     </div>
                     <div class="column event">
                         <i class="fa fa-music" aria-hidden="true" style=""></i>
                         <label for="tag_7">Concert</label>
-                        <input type="checkbox" name="user_tags[]" value="7" id="tag_7" />
+                        <input type="checkbox" name="user_tags[]" value="7" id="tag_7" <?php echo in_array(7, $userTags) ? 'checked="checked"' : '' ?>/>
                     </div>
                     <div class="column event violet">
                         <i class="fa fa-picture-o" aria-hidden="true" style=""></i>
                         <label for="tag_6">Culture</label>
-                        <input type="checkbox" name="user_tags[]" value="6" id="tag_6" checked="checked"/>
+                        <input type="checkbox" name="user_tags[]" value="6" id="tag_6" <?php echo in_array(6, $userTags) ? 'checked="checked"' : '' ?>/>
                     </div>
                     <div class="column event gold">
                         <i class="fa fa-trophy" aria-hidden="true" style=""></i>
                         <label for="tag_1">Escape Game</label>
-                        <input type="checkbox" name="user_tags[]" value="1" id="tag_1" />
+                        <input type="checkbox" name="user_tags[]" value="1" id="tag_1" <?php echo in_array(1, $userTags) ? 'checked="checked"' : '' ?>/>
                     </div>
 
                     <div class="column event">
                         <i class="fa fa-gamepad" aria-hidden="true" style="background: #26bea7;"></i>
                         <label for="tag_2">Loisirs</label>
-                        <input type="checkbox" name="user_tags[]" value="2" id="tag_2" />
+                        <input type="checkbox" name="user_tags[]" value="2" id="tag_2" <?php echo in_array(2, $userTags) ? 'checked="checked"' : '' ?>/>
                     </div>
 
                     <div class="column event">
                         <i class="fa fa-futbol-o" aria-hidden="true" style="background:  #f7c600;"></i>
 
                         <label for="tag_3">Sport</label>
-                        <input type="checkbox" name="user_tags[]" value="3" id="tag_3" checked="checked"/>
+                        <input type="checkbox" name="user_tags[]" value="3" id="tag_3" <?php echo in_array(3, $userTags) ? 'checked="checked"' : '' ?>/>
                     </div>
 
                     <br />
@@ -65,7 +65,7 @@
                 <center class="column event" style="margin:auto;width:20%;">
                     <i class="fa fa-question" aria-hidden="true" style="background:#fff;color:#e64215;"></i>
                     <label for="tag_3">Surprenez-moi !</label>
-                    <input type="checkbox" name="user_tags[]" value="3" id="tag_" checked=""/>
+                    <input type="checkbox" name="user_tags[]" value="3" id="tag_" />
                 </center>
 
                 <center style="width:70%;margin:20px auto 0;"><input type="submit" id="user_tags_form_submit" class="button" style="border: none; color: #ff4e00; margin-top: 30px;" value="Allons-y !"/></center>

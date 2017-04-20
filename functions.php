@@ -23,7 +23,7 @@ function get_database()
         $user = 'mybestroulette';
         $pass = 'surpriseme';
 
-        $dbh = new PDO('mysql:host=128.1.1.114;dbname=mybestroulette', $user, $pass);
+        $dbh = new PDO('mysql:host=localhost;dbname=mybestroulette', $user, $pass);
         return $dbh;
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage() . "<br/>";
@@ -189,7 +189,6 @@ function random_rule($id_event)
     if ($limit) {
         $query .= " LIMIT ".$limit;
     }
-    //echo $query;
 
     $stmt = $dbh->prepare("DELETE FROM event_user WHERE event_id = :event_id");
     $stmt->bindParam(':event_id', $id_event);
@@ -203,8 +202,35 @@ function random_rule($id_event)
         $stmt->bindParam(':event_id', $id_event);
         $stmt->execute();
 
+        $stmt = $dbh->prepare("INSERT INTO notification (user_id, title, content, created_at, is_read, event_id) VALUES (:user_id, 'Vous avez été invité à un évènement', '', NOW(), 0,  :event_id)");
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->bindParam(':event_id', $id_event);
+        $stmt->execute();
+
         //echo "user_id = ".$user_id." event_id = ".$id_event."\n";
     }
 }
 
-//random_rule(13); exit;
+
+function getUserNotifications()
+{
+    $dbh = get_database();
+
+    $stmt = $dbh->prepare("
+        SELECT e.*, n.title AS notif_title, n.content AS notif_content
+        FROM notification AS n
+        INNER JOIN event AS e ON n.event_id = e.id
+        WHERE n.user_id = :user_id
+        ORDER BY n.created_at DESC"
+    );
+
+    $userId = get_current_user_id();
+    $stmt->bindParam(':user_id', $userId);
+
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+//random_rule(10);
