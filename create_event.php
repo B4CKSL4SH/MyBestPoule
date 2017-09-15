@@ -4,7 +4,7 @@ require('header.php');
 ?>
     <section class="max-width">
         <a class="close ico" href="#">&times;</a>
-        <form method="POST" action="/">
+        <form method="POST" action="/MyBestPoule/">
 
             <div class="column form">
                 <h2 style="margin-top:0;">Proposer un nouveau groupe</h2>
