@@ -2,32 +2,35 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='';
 
+DROP SCHEMA IF EXISTS mybestpoule;
 CREATE SCHEMA IF NOT EXISTS `mybestpoule` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `mybestpoule` ;
 
-create table if not exists user (
-	id integer,
+create table user (
+	id integer AUTO_INCREMENT,
 	name text,
 	type smallint,
 	primary key (id)
 ) ENGINE=InnoDB;
 
-create table if not exists group_type (
-	id integer,
+create table group_type (
+	id integer AUTO_INCREMENT,
 	label text,
 	image text,
 	primary key (id)
 ) ENGINE=InnoDB;
 
-create table if not exists group_details (
-	id integer,
+create table group_details (
+	id integer AUTO_INCREMENT,
 	group_type_id integer,
 	title text,
-	created_at datetime,
-	updated_at datetime,
+	created_at datetime default now(),
+	updated_at datetime default null,
 	event_at datetime,
 	price float(7,2),
-	localization text,
+	localization text default null,
+	coords text default null,
+	description text default null,
 	INDEX `fk_groupdetails_grouptypeid_idx` (`group_type_id` ASC),
 	primary key (id),
 	CONSTRAINT `fk_groupdetails_grouptypeid`
@@ -37,8 +40,8 @@ create table if not exists group_details (
 	    ON UPDATE NO ACTION
 ) ENGINE=InnoDB;
 
-create table if not exists user_group_list (
-	id integer,
+create table user_group_list (
+	id integer AUTO_INCREMENT,
 	user_id integer,
 	group_details_id integer,
 	INDEX `fk_usergrouplist_userid_idx` (`user_id` ASC),
@@ -55,6 +58,15 @@ create table if not exists user_group_list (
 	    ON DELETE NO ACTION
 	    ON UPDATE NO ACTION
 ) ENGINE=InnoDB;
+
+insert into group_type (label) values ('Mathématiques'), ('Français'), ('Anglais'), ('Coaching'), ('Actions groupées');
+insert into group_details (group_type_id, title, event_at, price) values (
+	1, 'Cours de Math', '2017-09-22 18:00:00', 12.09
+), (2, 'Cours de Fr', '2017-09-30 21:00:00', 32.45
+), (3, 'Cours d''Anglais', '2017-10-02 17:00:00', 42.03
+), (4, 'Coaching Séduction', '2017-09-19 13:00:00', 21.87
+), (5, 'Actions groupées "Fuite d''eau co-propriété Les Ulysses"', '2017-09-16 19:00:00', 65.90
+);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
