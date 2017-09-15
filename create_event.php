@@ -93,7 +93,7 @@ require('header.php');
                     </div>
                     <div>
                         <label for="title">Titre du Groupe* :</label>
-                        <input type="text" name="title" value="test" placeholder="Titre" required="required" />
+                        <input type="text" name="title" placeholder="Titre" required="required" />
                     </div>
                     <div class="row">
                         <div style="margin-right:60px;">
@@ -107,15 +107,15 @@ require('header.php');
                     </div>
                     <div>
                         <label for="location">Localisation* :</label>
-                        <input type="text" name="location" value="test" placeholder="Adresse de l'évenement" required="required" style="width:500px;"/>
+                        <input type="text" name="location" placeholder="Adresse de l'évenement" required="required" style="width:500px;"/>
                     </div>
                     <div>
-                        <label for="price">Prix du Groupe :</label>
-                        <input type="number" name="price" />€
+                        <label for="price">Prix du Groupe* :</label>
+                        <input type="number" name="price" placeholder="Prix"/>€
                     </div>
                     <div>
-                        <label for="description">Description :</label>
-                        <textarea name="description"></textarea>
+                        <label for="description">Description* :</label>
+                        <textarea name="description" placeholder="Décrivez le besoin de votre groupe..."></textarea>
                     </div>
                     <br/>
                     <button type="submit" name="create_event" class="button" style="border:0;">Créer l'évènement</button>
