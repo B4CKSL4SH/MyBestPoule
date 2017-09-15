@@ -1,5 +1,5 @@
 <?php
-ini_set('session.save_path', '/home/mbuchon/tmp/');
+ini_set('session.save_path', '/home/fdevienne/tmp/');
 //include_once('functions.php');
 require('header.php');
 ?>
@@ -13,7 +13,7 @@ require('header.php');
                     <img src="includes/img/3.png" alt="" />
                     <div style="flex:1;">
                         <p>Bonjour John Doe</span><br />
-                            <a href="" title="voir profil">voir mon profil</a></p>
+                            <a href="profile.php" title="voir profil">voir mon profil</a></p>
 
                         <p>NEW ! 2 personnes se sont ajoutées au groupe XX</p>
 
