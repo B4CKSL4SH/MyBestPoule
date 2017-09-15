@@ -17,6 +17,10 @@
 
     <link rel="stylesheet/less" type="text/css" href="includes/css/style.less" />
 
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyAXYbYKI6ipzT2Zb85i_5Q7sf-mqnQ7yPY"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gmap3/7.2.0/gmap3.min.js"></script>
+
     <meta charset="UTF-8">
 </head>
 <body>
