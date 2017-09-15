@@ -9,7 +9,6 @@ require('header.php');
         <div class="dash">
 
             <div>
-                <br />
                 <div class="profil">
                     <img src="includes/img/3.png" alt="" />
                     <div style="flex:1;">
@@ -17,10 +16,11 @@ require('header.php');
                             <a href="" title="voir profil">voir mon profil</a></p>
 
                         <p>NEW ! 2 personnes se sont ajoutées au groupe XX</p>
-                        <hr />
+
                     </div>
                 </div>
-
+                <br />
+                <hr />
                 <br />
                 <h2>Groupes acceptés</h2>
 
@@ -49,6 +49,15 @@ require('header.php');
                         Proposer un groupe
                     </a>
                 </center>
+
+                <a class="button" href="#popup1">Let me Pop up</a>
+
+                <div id="popup1" class="overlay" style="display:block;">
+                    <div class="popup">
+                        <a class="close" href="#">&times;</a>
+                        <?php require('create_event.php'); ?>
+                    </div>
+                </div>
 
 
             </div>
@@ -147,6 +156,8 @@ require('header.php');
 
 
     </div>
+
+
 
 <?php
 require('footer.php');
