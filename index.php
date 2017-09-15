@@ -156,8 +156,8 @@ require('header.php');
                 .on('click', function (marker) {
                     $('.detail').hide();
                     $('.detail .name').html(marker.title);
-//                    $('.detail .type').html(marker.type);
-//                    $('.detail .date').html(marker.date);
+                    $('.detail .type').html(marker.type);
+                    $('.detail .date').html(marker.event_at);
                     $('.detail .adresse').html(marker.adresse);
                     $('.detail .price').html(marker.price);
                     $('.detail .description').html(marker.description);
