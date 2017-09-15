@@ -87,7 +87,8 @@ require('header.php');
                 <!-- Bloc Détail demande -->
                 <div class="detail" style="display:none;">
                     <div>
-                        <img src="includes/img/1.jpg" alt="" style="float:left;margin:0 20px 0;width:300px;"/>
+                    	<a class="close ico" href="#">&times;</a>
+                        <img class="img-popup" src="includes/img/1.jpg" alt="" style="float:left;margin:0 20px 0;width:300px;"/>
                         <div class="name" style="display:flex;flex-direction: row;justify-content: space-between;">
                             <p>Mathématisons :)</p> <p class="price">100€</p>
                         </div>
@@ -116,7 +117,8 @@ require('header.php');
             		address: "'.$group['localization'].'",
             		title: '.json_encode($group['title']).',
             		type: '.json_encode($group['group_type_label']).',
-            		description: '.json_encode($group['description']).',
+            		type_img: '.json_encode($group['group_type_image']).',
+            		description: '.json_encode(substr($group['description'], 0, 300)).',
             		price: "'.$group['price'].'",
             		event_at: '.json_encode(date('d/m/Y, H:i', strtotime($group['event_at']))).'
             	});';
@@ -155,6 +157,7 @@ require('header.php');
             })
                 .on('click', function (marker) {
                     $('.detail').hide();
+                    $('.detail .img-popup').attr('src', marker.type_img)
                     $('.detail .name').html(marker.title);
                     $('.detail .type').html(marker.type);
                     $('.detail .date').html(marker.event_at);
@@ -163,6 +166,9 @@ require('header.php');
                     $('.detail .description').html(marker.description);
                     $('.detail').show();
                 });
+            $('.detail a.close').click(function(){
+            	$('.detail').hide();
+            });
         </script>
 
 
