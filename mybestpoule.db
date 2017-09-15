@@ -59,13 +59,13 @@ create table user_group_list (
 	    ON UPDATE NO ACTION
 ) ENGINE=InnoDB;
 
-insert into group_type (label) values ('Mathématiques'), ('Français'), ('Anglais'), ('Coaching'), ('Actions groupées');
-insert into group_details (group_type_id, title, event_at, price) values (
-	1, 'Cours de Math', '2017-09-22 18:00:00', 12.09
-), (2, 'Cours de Fr', '2017-09-30 21:00:00', 32.45
-), (3, 'Cours d''Anglais', '2017-10-02 17:00:00', 42.03
-), (4, 'Coaching Séduction', '2017-09-19 13:00:00', 21.87
-), (5, 'Actions groupées "Fuite d''eau co-propriété Les Ulysses"', '2017-09-16 19:00:00', 65.90
+insert into group_type (label) values ('Cours'), ('Coaching'), ('Actions groupées');
+insert into group_details (group_type_id, title, event_at, price, coords) values (
+	1, 'Cours de Math', '2017-09-22 18:00:00', 12.09, '{"lat": "48.8620722", "lon": "2.352047"}'
+), (1, 'Cours de Fr', '2017-09-30 21:00:00', 32.45, '{"lat": "48.88247672", "lon": "2.35566598"}'
+), (1, 'Cours d''Anglais', '2017-10-02 17:00:00', 42.03, '{"lat": "48.85592868", "lon": "2.36074691"}'
+), (2, 'Coaching Séduction', '2017-09-19 13:00:00', 21.87, '{"lat": "48.85374426", "lon": "2.30413425"}'
+), (3, 'Actions groupées "Fuite d''eau co-propriété Les Ulysses"', '2017-09-16 19:00:00', 65.90, '{"lat": "48.86920446", "lon": "2.36250864"}'
 );
 
 SET SQL_MODE=@OLD_SQL_MODE;

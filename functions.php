@@ -20,10 +20,10 @@ function get_database()
     }
 
     try {
-        $user = 'mybestroulette';
-        $pass = 'surpriseme';
+        $user = 'root';
+        $pass = 'root';
 
-        $dbh = new PDO('mysql:host=localhost;dbname=mybestroulette', $user, $pass);
+        $dbh = new PDO('mysql:host=localhost;dbname=mybestpoule;port=8889', $user, $pass);
         return $dbh;
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage() . "<br/>";
@@ -232,5 +232,20 @@ function getUserNotifications()
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function getGroups()
+{
+    $dbh = get_database();
+
+    $st = $dbh->prepare("SELECT id, title, event_at, price, description, coords FROM group_details order by 1 asc");
+    $st->execute();
+    $groups = $st->fetchAll();
+
+    foreach ($groups as $k => &$group) {
+        $coords = json_decode($group['coords'], true);
+        $group['coords'] = $coords;
+    }
+
+    return $groups;
+}
 
 //random_rule(10);
