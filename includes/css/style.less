@@ -397,22 +397,6 @@ form{
 }
 
 */
-.cluster {
-  color: #FFF;
-  text-align: center;
-  font-family: Verdana;
-  font-size: 14px;
-  font-weight: bold;
-  text-shadow: 0 0 2px #000;
-  -moz-text-shadow: 0 0 2px #000;
-  -webkit-text-shadow: 0 0 2px #000;
-}
-.cluster-1 {
-  background: url(http://v6.gmap3.net/skin/gmap/js/lib/gmap3-images/m3.png) no-repeat;
-  line-height: 66px;
-  width: 70px;
-  height: 56px;
-}
 .overlay {
   position: fixed;
   top: 0;
@@ -458,14 +442,43 @@ form{
 .cluster{
     background: @theme;
     color:#fff;
-    font-size:20px;
+    font-size:18px;
     border-radius: 100%;
     padding:7px;
-    width:20px;
-    height:20px;
-    line-height:17px;
     text-align: center;
+    width:15px;
+    height:15px;
+    line-height:14px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 
-    &.cluster-2{}
-    &.cluster-3{}
+    &.cluster-2{
+        width:22px;
+        height:22px;
+        line-height:18px;
+        font-size:25px;
+        font-weight: 500;
+    }
+    &.cluster-3{
+        height: 37px;
+        line-height: 31px;
+        width: 37px;
+    }
 }
+/*
+.cluster {
+  color: #FFF;
+  text-align: center;
+  font-family: Verdana;
+  font-size: 14px;
+  font-weight: bold;
+  text-shadow: 0 0 2px #000;
+  -moz-text-shadow: 0 0 2px #000;
+  -webkit-text-shadow: 0 0 2px #000;
+}
+.cluster-1 {
+  background: url(http://v6.gmap3.net/skin/gmap/js/lib/gmap3-images/m3.png) no-repeat;
+  line-height: 66px;
+  width: 70px;
+  height: 56px;
+}
+*/

@@ -3,41 +3,30 @@ require('header.php');
 
 ?>
 
-<section class="max-width">
+<div class="content">
 
-    <div style="margin:auto;">
-        <center><h2 for="login">Connectez-vous</h2></center>
 
-        <form name="login" method="post">
-            <label for="email">Votre Email</label>
-            <input type="email" name="email" id="email" placeholder="Votre Email" required style="width:250px;"/>
-            <br /><br />
-            <label for="password">Votre mot de passe</label>
-            <input type="password" name="password" id="password" placeholder="Votre mot de passe" required style="width:250px;"/>
+    <div class="dash">
+
+        <div style="padding-left:82px;">
+            <h2 for="login">Connectez-vous</h2>
+
+            <form name="login" method="post">
+                <label for="email">Votre Email</label>
+                <input type="email" name="email" id="email" placeholder="Votre Email" required style="width:250px;"/>
+                <br />
+                <label for="password" style="display:flex;flex-direction: row;justify-content: space-between;">Votre mot de passe <a href="" title="" style="padding-right:75px;font-size:12px;color:#999;">oublié ?</a></label>
+                <input type="password" name="password" id="password" placeholder="Votre mot de passe" required style="width:250px;"/>
+                <br />
+                <a href="" type="submit" name="login" style="color:#fff;" class="button">Se connecte</a>
+            </form>
             <br />
-            <input type="submit" name="login" value="Se connecter" class="button" style="border:0;"/>
-        </form>
+            <p>ou <a href="" title="">s'inscrire</a></p>
 
-        <center><h2> ou </h2></center>
-
-        <form name="signup" method="post">
-            <div>
-                <label for="email">Votre e-mail</label>
-                <input type="email" name="email" id="email" placeholder="Votre Email" required style="width:250px;"/><br />
-            </div>
-            <br />
-            <div>
-                <label for="password">Votre mot de passe</label>
-                <input type="password" name="password" id="password" placeholder="" required style="width:250px;"/><br />
-            </div>
-            <input type="submit" name="signup" value="S'inscrire" class="button" style="border:0;"/>
-        </form>
-
+        </div>
     </div>
-
-</section>
-
+    <div class="map"></div>
+</div>
 
 <?php
-
 require('footer.php');
