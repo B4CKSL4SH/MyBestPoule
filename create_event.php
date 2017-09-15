@@ -1,7 +1,3 @@
-<?php
-require('header.php');
-
-?>
     <section class="max-width">
         <a class="close ico" href="#">&times;</a>
         <form method="POST" action="/">
