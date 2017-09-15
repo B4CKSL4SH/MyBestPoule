@@ -1,5 +1,5 @@
 <?php
-include_once('functions.php');
+//include_once('functions.php');
 //$dbh = get_database();
 //
 //if ($_SERVER['REQUEST_METHOD'] == 'POST') {
