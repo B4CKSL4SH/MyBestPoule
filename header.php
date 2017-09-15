@@ -28,14 +28,13 @@
 <header>
     <div class="max-width">
 
-        <div>
+        <div style="margin-right:-5px;">
             <a href="index.php" title="">
-
-               <img src="includes/img/logo.jpg" alt="" width="200" height="54"/>
+                Group'n Go
+               <!--<img src="includes/img/logo.jpg" alt="" width="200" height="54"/>-->
             </a>
         </div>
-
-        <div>
+        <div style="display:none;">
             <a href="create_event.php" title="create_event" class="button">Proposer un groupe</a>
             <a href="profile.php" title="profile" class="button grey"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
         </div>
