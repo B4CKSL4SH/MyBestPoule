@@ -1,0 +1,61 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='';
+
+CREATE SCHEMA IF NOT EXISTS `mybestpoule` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `mybestpoule` ;
+
+create table if not exists user (
+	id integer,
+	name text,
+	type smallint,
+	primary key (id)
+) ENGINE=InnoDB;
+
+create table if not exists group_type (
+	id integer,
+	label text,
+	image text,
+	primary key (id)
+) ENGINE=InnoDB;
+
+create table if not exists group_details (
+	id integer,
+	group_type_id integer,
+	title text,
+	created_at datetime,
+	updated_at datetime,
+	event_at datetime,
+	price float(7,2),
+	localization text,
+	INDEX `fk_groupdetails_grouptypeid_idx` (`group_type_id` ASC),
+	primary key (id),
+	CONSTRAINT `fk_groupdetails_grouptypeid`
+	    FOREIGN KEY (`group_type_id`)
+	    REFERENCES `mybestpoule`.`group_type` (`id`)
+	    ON DELETE NO ACTION
+	    ON UPDATE NO ACTION
+) ENGINE=InnoDB;
+
+create table if not exists user_group_list (
+	id integer,
+	user_id integer,
+	group_details_id integer,
+	INDEX `fk_usergrouplist_userid_idx` (`user_id` ASC),
+	INDEX `fk_usergrouplist_groupdetailsid_idx` (`group_details_id` ASC),
+	primary key (id),
+	CONSTRAINT `fk_usergrouplist_userid`
+	    FOREIGN KEY (`user_id`)
+	    REFERENCES `mybestpoule`.`user` (`id`)
+	    ON DELETE NO ACTION
+	    ON UPDATE NO ACTION,
+	CONSTRAINT `fk_usergrouplist_groupdetailsid`
+	    FOREIGN KEY (`group_details_id`)
+	    REFERENCES `mybestpoule`.`group_details` (`id`)
+	    ON DELETE NO ACTION
+	    ON UPDATE NO ACTION
+) ENGINE=InnoDB;
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
