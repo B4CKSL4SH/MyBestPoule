@@ -1,22 +1,22 @@
 <?php
     include_once 'header.php';
-    include_once('functions.php');
-
-    if (!get_current_user_id()) {
-        header('Location: login.php');
-        exit;
-    }
-
-
-    if (!empty($_POST) && isset($_POST['user_tags'])) {
-        purgeUserTags();
-
-        saveUserTags($_POST['user_tags']);
-        header('Location: index.php');
-        exit;
-    }
-
-    $userTags = getUserTagsIds();
+//    include_once('functions.php');
+//
+//    if (!get_current_user_id()) {
+//        header('Location: login.php');
+//        exit;
+//    }
+//
+//
+//    if (!empty($_POST) && isset($_POST['user_tags'])) {
+//        purgeUserTags();
+//
+//        saveUserTags($_POST['user_tags']);
+//        header('Location: index.php');
+//        exit;
+//    }
+//
+//    $userTags = getUserTagsIds();
 ?>
 
     <section class="max-width">

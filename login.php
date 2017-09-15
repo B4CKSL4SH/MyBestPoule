@@ -1,25 +1,4 @@
 <?php
-include_once('functions.php');
-$dbh = get_database();
-
-    if (!empty($_POST) && isset($_POST['login'])) {
-        // connection du user + redirection vers le dashboard
-        $result = signin($_POST['email'], $_POST['password']);
-        if (!$result) {
-            die("Erreur d'authentification");
-        }
-
-        header('Location: index.php');
-        exit;
-
-    } elseif (!empty($_POST) && isset($_POST['signup'])) {
-        // creation du user + redirection vers choix des filtres
-        $id = signup($_POST['email'], $_POST['password']);
-
-        header('Location: profile.php');
-        exit;
-    }
-
 require('header.php');
 
 ?>
