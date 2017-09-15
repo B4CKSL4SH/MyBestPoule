@@ -1,6 +1,38 @@
 <?php
 ini_set('session.save_path', '/home/fdevienne/tmp/');
 //include_once('functions.php');
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $user_id = get_current_user_id();
+
+    $stmt = $dbh->prepare("INSERT INTO group_details (group_type_id, title, event_at, price, localization, coords, description) VALUES (:type_id, :title, :event_at, :price, :localization, :coords, :description)");
+    $stmt->bindParam(':type_id', $_POST['cat']);
+    $stmt->bindParam(':title', $_POST['title']);
+    $stmt->bindParam(':description', $_POST['description']);
+
+    $start_at = $_POST['date_start_at'];
+    if ($_POST['time_start_at']) {
+        $start_at .= ' '.$_POST['time_start_at'];
+    }
+    $stmt->bindParam(':start_at', $start_at);
+    $price = 0.0;
+    if (array_key_exists('price', $_POST) && is_numeric($_POST['price'])) {
+        $price = $_POST['price'];
+    }
+    $stmt->bindParam(':price', $price);
+    $stmt->bindParam(':localization', $_POST['location']);
+    $coords = '48.8730122,2.316344299999969';
+    $stmt->bindParam(':coords', $coords);
+    $stmt->execute();
+
+    $group_id = $dbh->lastInsertId();
+
+    if (is_numeric($group_id)) {
+        $stmt = $dbh->prepare("INSERT INTO user_group_list (user_id, group_details_id) VALUES (:user_id, :group_id)");
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->bindParam(':group_id', $group_id);
+        $stmt->execute();
+    }
+}
 require('header.php');
 ?>
 
@@ -55,8 +87,6 @@ require('header.php');
                         <?php require('create_event.php'); ?>
                     </div>
                 </div>
-
-
 
                 <!-- Bloc Détail demande -->
                 <div class="detail">
