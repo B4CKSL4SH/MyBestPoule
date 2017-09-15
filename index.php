@@ -197,6 +197,7 @@ require('header.php');
                     }
                 }
             })
+
                 .on('click', function (marker) {
                     map.infowindow({content: marker.content})
                         .then(function (infowindow) {
