@@ -58,6 +58,19 @@ require('header.php');
                 </div>
 
 
+
+                <!-- Bloc Détail demande -->
+                <div class="detail">
+                    <div>
+                        <p class="name">Titre</p>
+                        <p class="date">Prévu le 15/09/2017</p>
+                        <p class="type">Type de demande</p>
+                        <p class="adresse">12 rue de penthièvre, 75008 Paris</p>
+                        <p class="price">100€</p>
+                        <p class="description">description</p>
+                    </div>
+                </div>
+
             </div>
 
         </div>
