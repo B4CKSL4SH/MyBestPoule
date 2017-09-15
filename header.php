@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>MyBestEvent</title>
+    <title>Group'N Go</title>
 
     <meta name="description" content="" />
 
@@ -26,12 +26,13 @@
 
         <div>
             <a href="index.php" title="">
-                <img src="includes/img/logo.jpg" alt="" width="200" height="54"/>
+
+               <img src="includes/img/logo.jpg" alt="" width="200" height="54"/>
             </a>
         </div>
 
         <div>
-            <a href="create_event.php" title="create_event" class="button">Créer l'évenement</a>
+            <a href="create_event.php" title="create_event" class="button">Proposer un groupe</a>
             <a href="profile.php" title="profile" class="button grey"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
         </div>
     </div>
