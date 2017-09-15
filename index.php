@@ -1,6 +1,7 @@
 <?php
-ini_set('session.save_path', '/home/fdevienne/tmp/');
-//include_once('functions.php');
+ini_set('session.save_path', '/tmp/');
+include_once('functions.php');
+$allGroups = getGroups();
 require('header.php');
 ?>
 
@@ -24,6 +25,17 @@ require('header.php');
                 <br />
                 <h2>Groupes acceptés</h2>
 
+                <?php foreach ($allGroups as $group) {
+                	?><div class="group">
+                	    <img src="includes/img/maths.jpg" alt="" />
+                	    <div>
+                	        <p style="display:flex;margin:0;justify-content:space-between;color:#333;"><?php echo $group['title']; ?></span><span><?php echo str_replace('.', ',', $group['price']) . '€'; ?></span></p>
+                	        <p style="color:#777;">Prévu le <?php echo date('d/m/Y, à H\h', strtotime($group['event_at'])); ?></p>
+                	        <p style="color:#777;">12 rue de penthièvre, 75008 Paris</p>
+                	        <p><a href="" title="voir +">voir +</a></p>
+                	    </div>
+                	</div>
+                <?php } ?>
                 <div class="group">
                     <img src="includes/img/maths.jpg" alt="" />
                     <div>
@@ -64,8 +76,16 @@ require('header.php');
         <div class="map"></div>
 
         <script>
-            var list = [
-                {
+            var list = [];
+            <?php foreach ($allGroups as $group) {
+            	echo 'list.push({
+            		position: ['.$group['coords']['lat'].','.$group['coords']['lon'].'],
+            		title: '.json_encode($group['title']).',
+            		description: "'.$group['description'].'",
+            		price: "'.$group['price'].'"
+            	});';
+            } ?>
+                /*{
                     position: [48.8620722, 2.352047],
                     content: 'blabla',
                     custom: 'test'
@@ -89,7 +109,8 @@ require('header.php');
                     position: [48.86920446, 2.36250864],
                     content: 'blabla2',
                     custom: 'test2'
-                },
+                }
+                ,
                 {
                     position: [48.87145368, 2.3511489],
                     content: 'blabla2',
@@ -120,7 +141,7 @@ require('header.php');
                     content: 'blabla2',
                     custom: 'test2'
                 }
-            ];
+            ];*/
             var map = $('.map')
                 .gmap3({
                     center:[48.8620722, 2.352047],
@@ -142,12 +163,12 @@ require('header.php');
                 }
             })
                 .on('click', function (marker) {
-                    map.infowindow({content: marker.content})
+                    /*map.infowindow({content: marker.content})
                         .then(function (infowindow) {
                             marker.addListener('click', function() {
                                 infowindow.open(map, marker);
                             });
-                        });
+                        });*/
                 });
         </script>
 
