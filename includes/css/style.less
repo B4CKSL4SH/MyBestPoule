@@ -148,7 +148,9 @@ hr{
 
         @media screen and (max-width:960px) {
             order:1;
-            min-height:300px;
+            &.log{
+                min-height:300px;
+            }
         }
     }
 }
@@ -517,12 +519,18 @@ form{
     min-height:300px;
     border:1px solid #dcdcdc;
     float:left;
-    margin:10px;
+    margin:10px 5px;
     background: #fff;
     box-shadow: 0px 1px 2px rgba(0,0,0,.1);
 
 
-    img{max-width:100%;}
+    img{max-width:100%;min-height:200px;}
+
+    &.bigone{
+        width:500px;
+
+
+    }
 }
 
 

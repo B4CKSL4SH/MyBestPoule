@@ -117,7 +117,7 @@ require('header.php');
 
         </div>
 
-        <div class="map" style="box-shadow: -1px 0 6px rgba(0, 0, 0, 0.3);"></div>
+        <div class="map log" style="box-shadow: -1px 0 6px rgba(0, 0, 0, 0.3);"></div>
 
         <script>
             var list = [

@@ -35,7 +35,7 @@
         </div>
         <div>
             <a href="#popup1" title="create_event" class="button">Proposer un groupe</a>
-            <a href="/" title="profile" class="button grey"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
+            <a href="/login.php" title="profile" class="button grey"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
         </div>
     </div>
 </header>
