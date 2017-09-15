@@ -6,7 +6,6 @@ require('header.php');
 
     <div class="content">
 
-
         <div class="dash">
 
             <div>
@@ -62,19 +61,25 @@ require('header.php');
                 <!-- Bloc Détail demande -->
                 <div class="detail">
                     <div>
-                        <p class="name">Titre</p>
-                        <p class="date">Prévu le 15/09/2017</p>
-                        <p class="type">Type de demande</p>
-                        <p class="adresse">12 rue de penthièvre, 75008 Paris</p>
-                        <p class="price">100€</p>
-                        <p class="description">description</p>
+                        <img src="includes/img/1.jpg" alt="" style="float:left;margin:0 20px 0;width:300px;"/>
+                        <div class="name" style="display:flex;flex-direction: row;justify-content: space-between;">
+                            <p>Mathématisons :)</p> <p class="price">100€</p>
+                        </div>
+
+                        <p class="type">Cours particulier</p>
+                        <br />
+
+                        <p class="date" style="margin:0;">Prévu le 15/09/2017</p>
+                        <p class="adresse" style="margin:0;">12 rue de penthièvre, 75008 Paris</p>
+
+                        <p class="description">"Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression... <a href="" title="" style="color:#fff;">Lire la suite</a></p>
                     </div>
                 </div>
 
             </div>
 
         </div>
-        <!--    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.223686826885!2d2.3141556161638466!3d48.873012179289056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fc915567a93%3A0xb4f9b09540439f82!2s12+Rue+de+Penthi%C3%A8vre%2C+75008+Paris!5e0!3m2!1sfr!2sfr!4v1505468909929" frameborder="0" style="border:0" allowfullscreen></iframe>-->
+
         <div class="map"></div>
 
         <script>
