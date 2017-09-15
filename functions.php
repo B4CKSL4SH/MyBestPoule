@@ -237,21 +237,25 @@ function getGroups()
     $dbh = get_database();
 
     $st = $dbh->prepare("SELECT 
-                            id, 
+                            group_details.id,
                             title, 
                             event_at, 
                             price, 
                             description, 
-                            coords 
+                            coords,
+                            localization,
+                            group_type.label as group_type_label,
+                            group_type.image as group_type_image
                         FROM 
-                            group_details 
+                            group_details
+                        JOIN group_type ON group_type.id = group_type_id
                         WHERE 
                             is_valid = 1 
                         ORDER BY 1 ASC
                         ");
     $st->execute();
     $groups = $st->fetchAll();
-
+    
     foreach ($groups as $k => &$group) {
         $coords = json_decode($group['coords'], true);
         $group['coords'] = $coords;
