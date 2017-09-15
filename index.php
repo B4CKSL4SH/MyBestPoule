@@ -71,7 +71,7 @@ require('header.php');
 
 
                 <!-- Bloc Détail demande -->
-                <div class="detail">
+                <div class="detail" style="display:none;">
                     <div>
                         <img src="includes/img/1.jpg" alt="" style="float:left;margin:0 20px 0;width:300px;"/>
                         <div class="name" style="display:flex;flex-direction: row;justify-content: space-between;">
@@ -104,63 +104,6 @@ require('header.php');
             		price: "'.$group['price'].'"
             	});';
             } ?>
-                /*{
-                    position: [48.8620722, 2.352047],
-                    content: 'blabla',
-                    custom: 'test'
-                },
-                {
-                    position: [48.88247672, 2.35566598],
-                    content: 'blabla2',
-                    custom: 'test2'
-                },
-                {
-                    position: [48.85592868, 2.36074691],
-                    content: 'blabla2',
-                    custom: 'test2'
-                },
-                {
-                    position: [48.85374426, 2.30413425],
-                    content: 'blabla2',
-                    custom: 'test2'
-                },
-                {
-                    position: [48.86920446, 2.36250864],
-                    content: 'blabla2',
-                    custom: 'test2'
-                }
-                ,
-                {
-                    position: [48.87145368, 2.3511489],
-                    content: 'blabla2',
-                    custom: 'test2'
-                },
-                {
-                    position: [48.86781688, 2.30280942],
-                    content: 'blabla2',
-                    custom: 'test2'
-                },
-                {
-                    position: [48.83138852, 2.36738102],
-                    content: 'blabla2',
-                    custom: 'test2'
-                },
-                {
-                    position: [48.88583389, 2.35776787],
-                    content: 'blabla2',
-                    custom: 'test2'
-                },
-                {
-                    position: [48.8233784, 2.33637207],
-                    content: 'blabla2',
-                    custom: 'test2'
-                },
-                {
-                    position: [48.85279301, 2.3239477],
-                    content: 'blabla2',
-                    custom: 'test2'
-                }
-            ];*/
             var map = $('.map')
                 .gmap3({
                     center:[48.8620722, 2.352047],
@@ -171,9 +114,21 @@ require('header.php');
                 markers: list,
                 cb: function (markers) {
                     if (markers.length > 1) { // 1 marker stay unchanged (because cb returns nothing)
-                        if (markers.length < 20) {
+                        if (markers.length < 3) {
                             return {
                                 content: "<div class='cluster cluster-1'>" + markers.length + "</div>",
+                                x: -26,
+                                y: -26
+                            };
+                        } else if (markers.length < 5) {
+                            return {
+                                content: "<div class='cluster cluster-2'>" + markers.length + "</div>",
+                                x: -26,
+                                y: -26
+                            };
+                        } else {
+                            return {
+                                content: "<div class='cluster cluster-3'>" + markers.length + "</div>",
                                 x: -26,
                                 y: -26
                             };
@@ -182,12 +137,14 @@ require('header.php');
                 }
             })
                 .on('click', function (marker) {
-                    /*map.infowindow({content: marker.content})
-                        .then(function (infowindow) {
-                            marker.addListener('click', function() {
-                                infowindow.open(map, marker);
-                            });
-                        });*/
+                    $('.detail').hide();
+                    $('.detail .name').html(marker.title);
+//                    $('.detail .type').html(marker.type);
+//                    $('.detail .date').html(marker.date);
+                    $('.detail .adresse').html(marker.adresse);
+                    $('.detail .price').html(marker.price);
+                    $('.detail .description').html(marker.description);
+                    $('.detail').show();
                 });
         </script>
 
