@@ -27,16 +27,15 @@
 
 <header>
     <div class="max-width">
-
-        <div style="margin-right:-5px;">
-            <a href="index.php" title="">
-                Group'n Go
-               <!--<img src="includes/img/logo.jpg" alt="" width="200" height="54"/>-->
+        <div>
+            <a href="index.php" title="" style="display:inline-block;padding-top:5px;">
+                <!--Group'n Go-->
+               <img src="includes/img/logo-2.jpg" alt="" height="50"/>
             </a>
         </div>
-        <div style="display:none;">
-            <a href="create_event.php" title="create_event" class="button">Proposer un groupe</a>
-            <a href="profile.php" title="profile" class="button grey"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
+        <div>
+            <a href="#popup1" title="create_event" class="button">Proposer un groupe</a>
+            <a href="/login.php" title="profile" class="button grey"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
         </div>
     </div>
 </header>

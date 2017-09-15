@@ -48,7 +48,14 @@ require('header.php');
                         <p>Bonjour John Doe</span><br />
                             <a href="profile.php" title="voir profil">voir mon profil</a></p>
 
-                        <p>NEW ! 2 personnes se sont ajoutées au groupe XX</p>
+                        <p style="padding:7px 14px;background: rgba(0,0,0,.05);">
+                            <i class="fa fa-user-plus fa-2x" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin:0 10px 0 0;"></i>
+                            <span style="display:inline-block;vertical-align:middle; width: 86%;">
+                                <span style="color:#ff8400;">NEW !</span>
+                                <br /> 2 personnes se sont ajoutées au groupe "Mathématisons :)"
+                            </span>
+                            <br style="clear:both;" />
+                        </p>
 
                     </div>
                 </div>
@@ -98,7 +105,7 @@ require('header.php');
                         <p class="date" style="margin:0;">Prévu le 15/09/2017</p>
                         <p class="adresse" style="margin:0;">12 rue de penthièvre, 75008 Paris</p>
 
-                        <p class="description">"Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression... <a href="" title="" style="color:#fff;">Lire la suite</a></p>
+                        <p class="description"><i class="fa fa-quote-left" aria-hidden="true"></i> Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression... <a href="" title="" style="color:#fff;">Lire la suite</a></p>
                     </div>
                 </div>
 
@@ -106,7 +113,7 @@ require('header.php');
 
         </div>
 
-        <div class="map"></div>
+        <div class="map log" style="box-shadow: -1px 0 6px rgba(0, 0, 0, 0.3);"></div>
 
         <script>
             var list = [];
@@ -168,6 +175,9 @@ require('header.php');
 
     </div>
 
+<style>
+    header .fa.fa-user-circle::before{content: "\f08b"!important;}
+</style>
 
 
 <?php
