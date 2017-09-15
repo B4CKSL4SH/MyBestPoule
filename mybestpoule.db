@@ -60,13 +60,24 @@ create table user_group_list (
 	    ON UPDATE NO ACTION
 ) ENGINE=InnoDB;
 
-insert into group_type (label) values ('Cours'), ('Coaching'), ('Actions groupées');
-insert into group_details (is_valid, group_type_id, title, event_at, price, coords) values (
-	1, 1, 'Cours de Math', '2017-09-22 18:00:00', 12.09, '{"lat": "48.8620722", "lon": "2.352047"}'
-), (0, 1, 'Cours de Fr', '2017-09-30 21:00:00', 32.45, '{"lat": "48.88247672", "lon": "2.35566598"}'
-), (0, 1, 'Cours d''Anglais', '2017-10-02 17:00:00', 42.03, '{"lat": "48.85592868", "lon": "2.36074691"}'
-), (1, 2, 'Coaching Séduction', '2017-09-19 13:00:00', 21.87, '{"lat": "48.85374426", "lon": "2.30413425"}'
-), (0, 3, 'Actions groupées "Fuite d''eau co-propriété Les Ulysses"', '2017-09-16 19:00:00', 65.90, '{"lat": "48.86920446", "lon": "2.36250864"}'
+insert into group_type (label, image) values ('Cours', 'https://image.noelshack.com/fichiers/2017/37/5/1505482401-shutterstock-315652511.jpg'), ('Coaching', 'https://image.noelshack.com/fichiers/2017/37/5/1505482279-shutterstock-526980355.jpg'), ('Actions groupées',  'https://image.noelshack.com/fichiers/2017/37/5/1505482369-shutterstock-526771582.jpg');
+insert into group_details (is_valid, group_type_id, title, event_at, price, coords, localization, description) values (
+	1, 1, 'Cours de Mathématiques', '2017-09-22 18:00:00', 19.90, '{"lat": "48.8620722", "lon": "2.352047"}', '88 rue de la clé des champs, 75001 Paris', ''
+), (0, 1, 'Cours de Programmation', '2017-09-30 21:00:00', 32.45, '{"lat": "48.88247672", "lon": "2.35566598"}', '12 rue de Penthièvre, 75008 Paris', ''
+), (0, 1, 'Cours d''Anglais', '2017-10-02 17:00:00', 42.03, '{"lat": "48.85592868", "lon": "2.36074691"}', '12 rue de Penthièvre, 75008 Paris', ''
+), (0, 2, 'Coaching Séduction', '2017-09-19 13:00:00', 21.87, '{"lat": "48.85374426", "lon": "2.30413425"}', '12 rue de Penthièvre, 75008 Paris', ''
+), (1, 2, 'Coaching Relooking', '2017-09-19 13:00:00', 75.00, '{"lat": "48.85374426", "lon": "2.30413425"}', '10 rue de Tolbiac, 75013 Paris', 'Détail de l’offre :
+Relooking, consultation en image et conseil beauté de 2h30 pour 1 personne à 75 € au lieu de 155 €*
+Relooking, consultation en image et conseil beauté de 3h30 pour 2 personnes (simultanément) à 99 € au lieu de 199 €*
+
+
+La prestation comprend :
+-Définition des besoins et des objectifs 
+-Conseils personnalisés pour déterminer les vêtements, les coupes et les matières adaptés à la silhouette et à la personnalité, pour mettre en valeur les atouts et camoufler les éventuels défauts 
+-Analyse de la colorimétrie à l’aide d’un drapping pour déterminer la palette de couleurs adaptée 
+-Conseils personnalisés sur l’harmonisation et l’association des couleurs 
+-Conseils pour choisir ses vêtements, son maquillage, sa coloration cheveux, ses bijoux ainsi que les accessoires à privilégier pour se mettre en valeur'
+), (1, 3, 'Actions groupées Juridique', '2017-09-16 19:00:00', 200.00, '{"lat": "48.86920446", "lon": "2.36250864"}', '12 rue Jean-Jacques Rousseau, 75009 Paris', ''
 );
 
 SET SQL_MODE=@OLD_SQL_MODE;

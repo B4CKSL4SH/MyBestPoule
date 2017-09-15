@@ -59,33 +59,15 @@ require('header.php');
 
                 <?php foreach ($allGroups as $group) {
                 	?><div class="group">
-                	    <img src="includes/img/maths.jpg" alt="" />
+                	    <img src="<?php echo $group['group_type_image'] ?>" alt="" />
                 	    <div>
                 	        <p style="display:flex;margin:0;justify-content:space-between;color:#333;"><?php echo $group['title']; ?></span><span><?php echo str_replace('.', ',', $group['price']) . '€'; ?></span></p>
                 	        <p style="color:#777;">Prévu le <?php echo date('d/m/Y, à H\h', strtotime($group['event_at'])); ?></p>
-                	        <p style="color:#777;">12 rue de penthièvre, 75008 Paris</p>
+                	        <p style="color:#777;"><?php echo $group['localization'] ?></p>
                 	        <p><a href="" title="voir +">voir +</a></p>
                 	    </div>
                 	</div>
                 <?php } ?>
-                <div class="group">
-                    <img src="includes/img/maths.jpg" alt="" />
-                    <div>
-                        <p style="display:flex;margin:0;justify-content:space-between;color:#333;">Cours de maths</span><span>19,99€</span></p>
-                        <p style="color:#777;">Prévu le 15/09/2017</p>
-                        <p style="color:#777;">12 rue de penthièvre, 75008 Paris</p>
-                        <p><a href="" title="voir +">voir +</a></p>
-                    </div>
-                </div>
-                <div class="group">
-                    <img src="includes/img/maths.jpg" alt="" />
-                    <div>
-                        <p style="display:flex;margin:0;justify-content:space-between;color:#333;">Cours de maths</span><span>19,99€</span></p>
-                        <p style="color:#777;">Prévu le 15/09/2017</p>
-                        <p style="color:#777;">12 rue de penthièvre, 75008 Paris</p>
-                        <p><a href="" title="voir +">voir +</a></p>
-                    </div>
-                </div>
                 <br /><br /><br />
 
                 <center style="">
@@ -131,9 +113,12 @@ require('header.php');
             <?php foreach ($allGroups as $group) {
             	echo 'list.push({
             		position: ['.$group['coords']['lat'].','.$group['coords']['lon'].'],
+            		address: "'.$group['localization'].'",
             		title: '.json_encode($group['title']).',
-            		description: "'.$group['description'].'",
-            		price: "'.$group['price'].'"
+            		type: '.json_encode($group['group_type_label']).',
+            		description: '.json_encode($group['description']).',
+            		price: "'.$group['price'].'",
+            		event_at: '.json_encode(date('d/m/Y, H:i', strtotime($group['event_at']))).'
             	});';
             } ?>
             var map = $('.map')
