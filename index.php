@@ -45,12 +45,10 @@ require('header.php');
                 <br /><br /><br />
 
                 <center style="">
-                    <a href="" title="" class="button">
+                    <a class="button" href="#popup1" title="">
                         Proposer un groupe
                     </a>
                 </center>
-
-                <a class="button" href="#popup1">Let me Pop up</a>
 
                 <div id="popup1" class="overlay" style="display:block;">
                     <div class="popup">
