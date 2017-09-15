@@ -1,5 +1,5 @@
     <section class="max-width">
-
+        <a class="close ico" href="#">&times;</a>
         <form method="POST">
 
             <div class="column form">
@@ -17,9 +17,16 @@
                     </select>
                 </div>
                 <br /><br />
-                <div>
-                    <label for="title">Titre du Groupe* :</label>
-                    <input type="text" name="title" placeholder="Ex : Super Hackathon de dev ;)" required="required" />
+
+                <div style="margin-top:22px;display:flex;flex-direction: row;">
+                    <div style="margin-right:50px;">
+                        <label for="title">Titre du Groupe* :</label>
+                        <input type="text" name="title" placeholder="Ex : Super Hackathon de dev ;)" required="required" />
+                    </div>
+                    <div>
+                        <label for="price">Prix* :</label>
+                        <input type="number" name="price" placeholder="00" style="min-width:0!important;width:70px;display:inline-block;"/> €
+                    </div>
                 </div>
                 <div class="row">
                     <div style="margin-right:60px;">
@@ -31,26 +38,26 @@
                         </div>
                     </div>
                 </div>
-                <div>
+                <div style="margin-top:22px;">
                     <label for="location">Localisation* :</label>
                     <input type="text" name="location" placeholder="Ex : 12 rue de Penthievre, 75008 Paris" required="required" style="width:500px;"/>
-                </div>
-                <div>
-                    <label for="price">Prix* :</label>
-                    <input type="number" name="price" placeholder="00" style="min-width:0!important;width:70px;display:inline-block;"/> €
                 </div>
                 <div>
                     <label for="description">Description* :</label>
                     <textarea name="description" placeholder="Décrivez le besoin de votre groupe..."></textarea>
                 </div>
                 <br/>
+                <a href="" title="" style="font-size:12px;">+ Ajouter Une photo au Groupe</a>
                 <!--<div style="margin-right:30px;">
                 <img src="includes/img/effeil.jpg" alt="" width="220" />
                 <br /><a href="" title="" style="font-size:12px;">Changer la photo du Groupe</a>
             </div>-->
                 <br />
-                <button type="submit" name="create_event" class="button" style="border:0;">Créer le groupe</button>
-                <button type="cancel" class="secondary">Annuler</button>
+                <div style="flex-direction: row;text-align: right">
+                    <a href="#" class="close secondary">Annuler</a>
+                    &nbsp;&nbsp;
+                    <button type="submit" name="create_event" class="button" style="border:0;">Créer le groupe</button>
+                </div>
             </div>
 
 

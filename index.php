@@ -54,7 +54,6 @@ require('header.php');
 
                 <div id="popup1" class="overlay" style="display:block;">
                     <div class="popup">
-                        <a class="close" href="#">&times;</a>
                         <?php require('create_event.php'); ?>
                     </div>
                 </div>
