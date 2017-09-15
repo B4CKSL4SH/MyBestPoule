@@ -236,7 +236,19 @@ function getGroups()
 {
     $dbh = get_database();
 
-    $st = $dbh->prepare("SELECT id, title, event_at, price, description, coords FROM group_details order by 1 asc");
+    $st = $dbh->prepare("SELECT 
+                            id, 
+                            title, 
+                            event_at, 
+                            price, 
+                            description, 
+                            coords 
+                        FROM 
+                            group_details 
+                        WHERE 
+                            is_valid = 1 
+                        ORDER BY 1 ASC
+                        ");
     $st->execute();
     $groups = $st->fetchAll();
 
