@@ -23,7 +23,20 @@ require('header.php');
 
         </div>
     </div>
-    <div class="map"></div>
+    <div class="map">
+
+        <div class="group-home">
+            <img src="includes/img/1.jpg" alt="" />
+
+            <div style="padding:12px;">
+                <h3>Cours d'informatique</h3>
+                <p>28€</p>
+
+                <p><i class="fa fa-users" aria-hidden="true" style="font-size:16px;"></i> 6 personnes /20</p>
+            </div>
+        </div>
+
+    </div>
 
 </div>
 
