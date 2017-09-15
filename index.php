@@ -119,6 +119,7 @@ require('header.php');
             <?php foreach ($allGroups as $group) {
             	echo 'list.push({
             		position: ['.$group['coords']['lat'].','.$group['coords']['lon'].'],
+            		icon: \'http://maps.google.com/mapfiles/marker_green.png\',
             		address: "'.$group['localization'].'",
             		title: '.json_encode($group['title']).',
             		type: '.json_encode($group['group_type_label']).',
