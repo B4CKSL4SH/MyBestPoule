@@ -4,8 +4,6 @@ require('header.php');
 ?>
 
 <div class="content">
-
-
     <div class="dash">
 
         <div style="padding-left:82px;">
@@ -26,6 +24,7 @@ require('header.php');
         </div>
     </div>
     <div class="map"></div>
+
 </div>
 
 <?php
